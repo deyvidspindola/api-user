@@ -1,5 +1,7 @@
 <?php
+namespace App\Services;
 
+use App\Models\Users;
 
 class UserService
 {
@@ -9,14 +11,14 @@ class UserService
      */
     private $users;
 
-    public function __construct(Users $users)
+    public function __construct()
     {
-        $this->users = $users;
+        $this->users = new Users();
     }
 
     public function all()
     {
-        $this->users->getData();
+        return $this->users->getData();
     }
     
 }

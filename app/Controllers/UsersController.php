@@ -1,5 +1,8 @@
 <?php
+namespace App\Controllers;
 
+
+use App\Services\UserService;
 
 class UsersController
 {
@@ -9,15 +12,14 @@ class UsersController
      */
     private $userService;
 
-    public function __construct(UserService $userService)
+    public function __construct()
     {
-        $this->userService = $userService;
+        $this->userService = new UserService();
     }
 
     public function index()
     {
-        $data = $this->userService->all();
-        var_dump($data);
+        return responseJson($this->userService->all());
     }
 
     public function create()
@@ -25,9 +27,11 @@ class UsersController
         
     }
 
-    public function store()
+    public function store($id)
     {
-        
+        dd($id);
+
+        echo $id;
     }
 
     public function update()
